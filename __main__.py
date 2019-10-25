@@ -1,5 +1,5 @@
 
-import numpy as np
+from model import PopulationModel
 
 ## vector of population nodes
 # nodes[0]: susceptible
@@ -16,24 +16,18 @@ tmat = [
     [0.00, 0.01, 0.00, 1.00]
 ]
 
-def printmodel(iteration, nodes):
-    format = "{itr}: nodes={nodes} => sum={sum}"
-    string = format.format(itr=iteration, nodes=nodes, sum=np.sum(nodes))
-    print(string)
-
 def main():
 
-    ## use the global model tensors
-    global nodes
-    global tmat
+    ## define our population model
+    model = PopulationModel(nodes, tmat)
 
     ## print the initial population
-    printmodel(0, nodes)
+    print("{0} (Initial Model State)".format(model))
 
     ## iterate over time
-    for i in range(50):
-        nodes = np.matmul(tmat, nodes)
-        printmodel(i+1, nodes)
+    for _ in range(50):
+        model.iterate()
+        print(model)
 
 if __name__ == "__main__":
     main()
