@@ -1,5 +1,6 @@
 
 from model import PopulationModel
+from model import PopulationPlotter
 
 ## vector of population nodes
 # nodes[0]: susceptible
@@ -26,6 +27,11 @@ def main():
 
     ## print the population history
     print(str(model.history))
+
+    ## show plot of population nodes over time
+    plotter = PopulationPlotter(model.history)
+    plotter.labels = ["susceptable", "infected", "recovered", "dead"]
+    plotter.plot()
 
 if __name__ == "__main__":
     main()
