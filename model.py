@@ -12,8 +12,7 @@ class PopulationModel:
         self.history.push(self.nodes)
 
     def __str__(self):
-        format = "{itr}: nodes={nodes} => sum={sum}"
-        return format.format(itr=self.iteration, nodes=self.nodes, sum=np.sum(self.nodes))
+        return str(PopulationStrings(self.iteration, self.nodes))
 
     def iterate(self, count=1):
         for _ in range(count):
@@ -33,7 +32,16 @@ class PopulationHistory:
 
     def __str__(self):
         string = ""
-        format = "{0}: nodes={1} => sum={2}"
         for i in range(len(self.timesets)):
-            string += format.format(i, self.timesets[i], np.sum(self.timesets[i])) + '\n'
+            string += str(PopulationStrings(i, self.timesets[i])) + '\n'
         return string
+
+class PopulationStrings:
+
+    def __init__(self, iteration, nodes):
+        self.iteration = iteration
+        self.nodes = nodes
+
+    def __str__(self):
+        format = "{itr}: nodes={nodes} => sum={sum}"
+        return format.format(itr=self.iteration, nodes=self.nodes, sum=np.sum(self.nodes))
