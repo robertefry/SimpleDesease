@@ -21,13 +21,11 @@ def main():
     ## define our population model
     model = PopulationModel(nodes, tmat)
 
-    ## print the initial population
-    print("{0} (Initial Model State)".format(model))
-
     ## iterate over time
-    for _ in range(50):
-        model.iterate()
-        print(model)
+    model.iterate(50)
+
+    ## print the population history
+    print(str(model.history))
 
 if __name__ == "__main__":
     main()
