@@ -4,11 +4,10 @@ import numpy as np
 
 class PopulationModel:
 
-    iteration = 0
-
     def __init__(self, nodes, tmat):
         self.nodes = nodes
         self.tmat = tmat
+        self.iteration = 0
         self.history = PopulationHistory()
         self.history.push(self.nodes)
 
@@ -23,7 +22,8 @@ class PopulationModel:
 
 class PopulationHistory:
 
-    timesets = []
+    def __init__(self):
+        self.timesets = []
 
     def push(self, nodes):
         self.timesets.append(nodes)
