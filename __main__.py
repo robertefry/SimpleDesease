@@ -7,14 +7,16 @@ from model import PopulationPlotter
 # nodes[1]: infected
 # nodes[2]: recovered
 # nodes[3]: dead
-nodes = [1, 0, 0, 0]
+# nodes[4]: total infections
+nodes = [1, 0, 0, 0, 0]
 
 ## transition matrix
 tmat = [
-    [0.95, 0.00, 0.00, 0.00],
-    [0.05, 0.84, 0.00, 0.00],
-    [0.00, 0.15, 1.00, 0.00],
-    [0.00, 0.01, 0.00, 1.00]
+    [0.95, 0.00, 0.00, 0.00, 0.00],
+    [0.05, 0.84, 0.00, 0.00, 0.00],
+    [0.00, 0.15, 1.00, 0.00, 0.00],
+    [0.00, 0.01, 0.00, 1.00, 0.00],
+    [0.05, 0.00, 0.00, 0.00, 1.00]
 ]
 
 def main():
@@ -30,7 +32,7 @@ def main():
 
     ## show plot of population nodes over time
     plotter = PopulationPlotter(model.history)
-    plotter.labels = ["susceptable", "infected", "recovered", "dead"]
+    plotter.labels = ["susceptable", "infected", "recovered", "dead", "total infected"]
     plotter.plot()
 
 if __name__ == "__main__":
