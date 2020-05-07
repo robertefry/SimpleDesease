@@ -59,6 +59,7 @@ class PopulationPlotter:
             percent = "{:02.1f}%".format(self.nodesets[i][self.iterations]*100).zfill(5)
             label = "{percent} {label}".format(label=self.labels[i], percent=percent)
             plt.plot(self.nodesets[i], label=label)
+        plt.title("{itr} iterations".format(itr=self.iterations))
         plt.xlabel("iteration")
         plt.ylabel("percentage")
         plt.legend(loc='best')
